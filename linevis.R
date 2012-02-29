@@ -31,10 +31,11 @@ load_commit_stats <- function() {
 #' @param commit_stats
 #' @param variable the variable to plot
 #' @return ggplot object
-plot_commit_stats<- function(commit_stats, variable) {
+plot_commit_stats<- function(commit_stats, variable, title) {
   library(ggplot2)
   ggplot(commit_stats, aes_string(x = 'timestamp', y = variable, colour = 'language')) +
-    geom_area(aes(fill = language), position = 'stack') 
+    geom_area(aes(fill = language), position = 'stack') +
+    opts(title=title)
 }
 
 
@@ -42,11 +43,11 @@ plot_commit_stats<- function(commit_stats, variable) {
 #' @export
 #' @param commit_stats
 plot_all_to_PNG <- function(commit_stats) {
-  plot_to_png <- function(variable) {
-    png(sprintf('./commit_%s.png', variable))
-    print(plot_commit_stats(commit_stats, variable))
+  plot_to_png <- function(variable, title) {
+    png(sprintf('./commit_%s.png', variable), height=400, width=600)
+    print(plot_commit_stats(commit_stats, variable, title))
     dev.off()
   }
-  plot_to_png('code')
-  plot_to_png('files')
+  plot_to_png('code', 'Lines of code over time, by language')
+  plot_to_png('files', 'Number of files over time, by language')
 }
