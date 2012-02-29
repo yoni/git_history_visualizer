@@ -15,6 +15,7 @@ for commit in `git log --format='%H'`; do
   ../cloc-1.55.pl \
     --read-lang-def=../cloc.out \
     --extract-with="tar zxf >FILE<" \
+    --csv \
     *.tar.gz > $out/$commit.out &&\
   rm *.tar.gz
 done
