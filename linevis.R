@@ -5,6 +5,7 @@
 #' commit_stats <- load_commit_stats()
 #' summary(commit_stats)
 load_commit_stats <- function() {
+  library(plyr)
 
   commits <- read.csv('out/commits.csv', header=FALSE, col.names=c('ref','timestamp'))
 
@@ -28,9 +29,24 @@ load_commit_stats <- function() {
 #' Plots the lines f code for each language at each commit time.
 #' @export
 #' @param commit_stats
+#' @param variable the variable to plot
 #' @return ggplot object
-plot_commit_lines_of_code <- function(commit_stats) {
-  ggplot(commit_stats, aes(x = timestamp, y = code, colour = language)) +
+plot_commit_stats<- function(commit_stats, variable) {
+  library(ggplot2)
+  ggplot(commit_stats, aes_string(x = 'timestamp', y = variable, colour = 'language')) +
     geom_area(aes(fill = language), position = 'stack') 
 }
 
+
+#' Plot all to PNG.
+#' @export
+#' @param commit_stats
+plot_all_to_PNG <- function(commit_stats) {
+  plot_to_png <- function(variable) {
+    png(sprintf('./commit_%s.png', variable))
+    print(plot_commit_stats(commit_stats, variable))
+    dev.off()
+  }
+  plot_to_png('code')
+  plot_to_png('files')
+}
