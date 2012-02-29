@@ -47,7 +47,13 @@ commit_stat_colors <- function()
 #' @return ggplot object
 plot_commit_stats<- function(commit_stats, variable, title) {
   ggplot(commit_stats, aes_string(x = 'timestamp', y = variable, colour = 'language')) +
-    opts(title=title)
+    opts(
+      title=title,
+      legend.key = theme_blank(),
+      legend.key.size = unit(2, 'lines'),
+      legend.text = theme_text(hjust=0, size=20),
+      legend.title = theme_text(hjust=0, size=20)
+    )
 }
 
 #' Plots the variable as an area chart vs. Time + languages.
