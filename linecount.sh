@@ -14,6 +14,7 @@ for commit in `git log --format="%H"`; do
   git reset --hard $commit &&\
   ../cloc-1.55.pl \
     --read-lang-def=../cloc.out \
+    --exclude-dir=.git \
     --csv \
     --out=../out/$commit.csv \
     *
