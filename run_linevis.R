@@ -2,7 +2,7 @@
 library(ggplot2)
 library(plyr)
 
-source('linevis.R')
+source('lib/linevis.R')
 
 args <- commandArgs(trailingOnly = TRUE)
 if(length(args) != 1)
