@@ -1,3 +1,4 @@
 #!/bin/sh
+echo "TEST: run.sh"
 mkdir -p out
-./linecount.sh . ./out && ./run_linevis.R ./out
+./run.sh . ./out

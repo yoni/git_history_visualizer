@@ -2,7 +2,22 @@ Creates a visualization of a git repository's programming languages over time.
 
 Usage
 -----
+
+Run stats calculations and image generation independently. Useful for working
+on or debugging either part of the process.
+
     linecount.sh GIT_REPOSITORY OUT_PATH
         
+        GIT_REPOSITORY may be any git path or URL
+        OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
+
+    run_linevis.R OUT_PATH
+
+        OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
+
+Run stats calculations and image generation together:
+
+   run.sh GIT_REPOSITORY OUT_PATH 
+
         GIT_REPOSITORY may be any git path or URL
         OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
