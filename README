@@ -1,0 +1,8 @@
+Creates a visualization of a git repository's programming languages over time.
+
+Usage
+-----
+    linecount.sh GIT_REPOSITORY OUT_PATH
+        
+        GIT_REPOSITORY may be any git path or URL
+        OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
