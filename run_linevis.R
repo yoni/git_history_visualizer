@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
-library(ggplot2)
-library(plyr)
-
-source('lib/linevis.R')
+options(repos='http://cran.rstudio.com')
+library(rbundler)
+bundle()
+library(githistoryvisualizer)
 
 args <- commandArgs(trailingOnly = TRUE)
 if(length(args) != 1)

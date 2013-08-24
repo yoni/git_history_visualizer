@@ -1,0 +1,12 @@
+Package: githistoryvisualizer
+Title: Utility for visualizing git history
+Description: Visualizes line counts for a given git repository.
+Version: 0.1
+License: file LICENSE
+Author: yoni.ben-meshulam
+Maintainer: <yoni@opower.com>
+Depends:
+    ggplot2,
+    plyr
+Collate:
+    'linevis.R'

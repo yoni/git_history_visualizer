@@ -1,0 +1,5 @@
+export(load_commit_stats)
+export(plot_all_to_PNG)
+export(plot_commit_stats)
+export(plot_commit_stats_area)
+export(plot_commit_stats_line)

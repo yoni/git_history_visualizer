@@ -1,5 +1,12 @@
 Creates a visualization of a git repository's programming languages over time.
 
+Prerequisites
+-------------
+
+R installation with the `rbundler` package installed (for dependency management).
+Perl for the linecount.sh script.
+Ruby installed for the Github client and overall script wrapper.
+
 Usage
 -----
 
@@ -7,7 +14,7 @@ Run stats calculations and image generation independently. Useful for working
 on or debugging either part of the process.
 
     linecount.sh GIT_REPOSITORY OUT_PATH
-        
+
         GIT_REPOSITORY may be any git path or URL
         OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
 
@@ -17,7 +24,7 @@ on or debugging either part of the process.
 
 Run stats calculations and image generation together:
 
-   run.sh GIT_REPOSITORY OUT_PATH 
+   run.sh GIT_REPOSITORY OUT_PATH
 
         GIT_REPOSITORY may be any git path or URL
         OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
