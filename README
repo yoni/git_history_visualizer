@@ -1,17 +1,34 @@
-Creates a visualization of a git repository's programming languages over time.
+A utility for calculating and visualizing lines of code in a git repository throughout it's history.
+
+Includes the following stats for each commit, by language (i.e. file extension):
+* Number of files
+* Comment lines
+* Blank lines
+* Code lines
 
 Prerequisites
 -------------
 
-R installation with the `rbundler` package installed (for dependency management).
-Perl for the linecount.sh script.
-Ruby installed for the Github client and overall script wrapper.
+Perl -- the main lines-of-code counting logic is in the cloc-1.55.pl and cloc.out Perl scripts. These
+are called in `linecount.sh` for each individual git commit.
+
+Ruby -- used to retrieve the set of Git repositories from a Github instance (e.g. github.com or Github Enterprise).
+
+R -- used for stats visualizations over time. Requires the `rbundler` R package for dependency management.
 
 Usage
 -----
 
-Run stats calculations and image generation independently. Useful for working
-on or debugging either part of the process.
+There are several executables for running different high-level or lower-level tasks:
+
+Run stats calculations _and_ image generation for a given git repository:
+
+   run.sh GIT_REPOSITORY OUT_PATH
+
+        GIT_REPOSITORY may be any git path or URL
+        OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
+
+Run stats calculations or plot generation _independently_:
 
     linecount.sh GIT_REPOSITORY OUT_PATH
 
@@ -22,9 +39,21 @@ on or debugging either part of the process.
 
         OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
 
-Run stats calculations and image generation together:
 
-   run.sh GIT_REPOSITORY OUT_PATH
+Get a JSON representation of a given Github user's repositories:
 
-        GIT_REPOSITORY may be any git path or URL
+    github_repositories.rb HOST USER
+
+        HOST the Github host from which to retrieve user repositories (e.g. www.github.com).
+        USER the Github user for which to retrieve repositories (e.g. your-username).
+
+
+Run stats calculations _and_ image generation for a set of git repositories based on the output
+of `github_repositories.rb`:
+
+    run_linevis_for_repositories.rb REPOSITORIES_FILE PATTERN OUT_PATH
+
+        REPOSITORIES_FILE the output of `github_repositories.rb` in JSON format
+        PATTERN a Ruby regular expression used to match repositories from REPOSITORIES_FILE (e.g. '^stuff$')
         OUT_PATH is the path to which output (e.g. images, CSV) will be placed.
+
