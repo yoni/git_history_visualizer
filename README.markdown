@@ -9,8 +9,8 @@ Includes the following stats for each commit, by language (i.e. file extension):
 Prerequisites
 -------------
 
-Perl -- the main lines-of-code counting logic is in the cloc-1.55.pl and cloc.out Perl scripts. These
-are called in `linecount.sh` for each individual git commit.
+Perl -- the main lines-of-code counting logic is in the [cloc](http://cloc.sourceforge.net/) Perl script, which is
+called by `linecount.sh` for each individual git commit.
 
 Ruby -- used to retrieve the set of Git repositories from a Github instance (e.g. github.com or Github Enterprise).
 
