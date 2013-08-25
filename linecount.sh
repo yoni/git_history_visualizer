@@ -10,6 +10,8 @@ git clone $1 $temporary_repo
 
 
 cd $temporary_repo
+number_of_commits=`git rev-list HEAD --count`
+echo "Number of commits: $number_of_commits"
 git log --format="%H,%ci" > $out/commits.csv
 for commit in `git log --format="%H"`; do
   git reset --hard $commit &&\
