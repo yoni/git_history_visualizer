@@ -39,11 +39,11 @@ load_commit_stats <- function(path) {
 #' @return ggplot object
 plot_commit_stats<- function(commit_stats, variable, title) {
   ggplot(commit_stats, aes_string(x = 'timestamp', y = variable, colour = 'language')) +
-    opts(
-      title=title,
-      legend.key = theme_blank(),
-      legend.text = theme_text(hjust=0, size=20),
-      legend.title = theme_text(hjust=0, size=20)
+    labs(title = title) +
+    theme(
+      legend.key = element_blank(),
+      legend.text = element_text(hjust=0, size=20),
+      legend.title = element_text(hjust=0, size=20)
     )
 }
 

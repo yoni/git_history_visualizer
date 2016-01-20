@@ -6,7 +6,7 @@ License: file LICENSE
 Author: yoni.ben-meshulam
 Maintainer: <yoni@opower.com>
 Depends:
-    ggplot2,
+    ggplot2>=2.0.0,
     plyr
 Collate:
     'linevis.R'
